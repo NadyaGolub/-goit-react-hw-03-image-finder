@@ -30,7 +30,7 @@ class App extends Component {
 
     if (prevSearch !== currentSearch) {
       this.setState({ loading: true, page: 1, images: [] });
-
+      
       const response = await this.Api();
 
       if (response.data.hits.length === 0) {
@@ -58,7 +58,7 @@ class App extends Component {
     try {
       const response = await axios.get('', {
         params: {
-          key: '29743747-4d974b8d370b5a5c48adadad9',
+          key: '32971749-6f722df3241990952229e902a',
           q: this.state.search,
           image_type: 'photo',
           orientation: 'horizontal',
@@ -84,7 +84,7 @@ class App extends Component {
       return this.notificationInfo();
     }
 
-    this.setState({ search: searchValue });
+    this.setState({ search: searchValue, page: 1, images: [] });
 
     form.reset();
   };
