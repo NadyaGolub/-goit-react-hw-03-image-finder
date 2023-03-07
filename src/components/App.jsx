@@ -28,10 +28,15 @@ class App extends Component {
     const prevPage = prevState.page;
     const currentPage = this.state.page;
 
-    if (prevSearch !== currentSearch) {
+    if (prevPage !== currentPage || prevSearch !== currentSearch) {
       this.setState({ loading: true, page: 1, images: [] });
       
       const response = await this.Api();
+      this.setState(prevState => {
+        return {
+          images: [...prevState.images, ...response.data.hits],
+        };
+      });
 
       if (response.data.hits.length === 0) {
         return this.notificationError();
@@ -42,16 +47,6 @@ class App extends Component {
       });
     }
 
-    if (prevPage !== currentPage) {
-      this.setState({ loading: true });
-
-      const response = await this.Api();
-      this.setState(prevState => {
-        return {
-          images: [...prevState.images, ...response.data.hits],
-        };
-      });
-    }
   }
 
   Api = async () => {
