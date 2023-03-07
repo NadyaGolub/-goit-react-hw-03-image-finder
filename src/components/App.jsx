@@ -29,7 +29,7 @@ class App extends Component {
     const currentPage = this.state.page;
 
     if (prevPage !== currentPage || prevSearch !== currentSearch) {
-      this.setState({ loading: true, page: 1, images: [] });
+      this.setState({ loading: true});
       
       const response = await this.Api();
       this.setState(prevState => {
