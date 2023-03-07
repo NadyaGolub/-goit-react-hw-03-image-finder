@@ -35,17 +35,14 @@ class App extends Component {
       this.setState(prevState => {
         return {
           images: [...prevState.images, ...response.data.hits],
-          totalImage:0,
+          totalImage: response.data.totalHits,
         };
       });
 
       if (response.data.hits.length === 0) {
         return this.notificationError();
       }
-      this.setState({
-        
-        totalImage: response.data.totalHits,
-      });
+      
     }
 
   }
