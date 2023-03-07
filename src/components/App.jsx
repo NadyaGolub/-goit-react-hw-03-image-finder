@@ -41,10 +41,7 @@ class App extends Component {
       if (response.data.hits.length === 0) {
         return this.notificationError();
       }
-      this.setState({
-        images: response.data.hits,
-        totalImage: response.data.totalHits,
-      });
+      
     }
 
   }
